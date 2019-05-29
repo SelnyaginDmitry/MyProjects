@@ -1,43 +1,33 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
+
 
 int main()
 {
-	int a, b, c;
-	printf("Enter the coefficient of quadratic equation:  ");
-	scanf("%d%d%d", &a, &b, &c);
-	float x;
-	if ((a==0) && (b==0))
-	{
-		printf("none\n");
-	}
-	else if (a==0)
-	{
-		x = a/b;
-		printf("x1 = x2 = %f\n", x);
-	}
-	else
-	{
-		float D = b*b - 4*a*c;
-		if (D<0)
-		{
-			printf("no real roots\n");
-		}
-		else if (D == 0)
-		{
-			x = -b/(2*a);
-			printf ("x1 = x2 = %f\n", x);
-		}
-		else
-		{
-			x = (-(float)b + sqrt(D))/(2*a);
-			printf ("x1 = %f\n", x);
-			x = (-(float)b - sqrt(D))/(2*a);
-			printf ("x2 = %f\n", x);
-		}
-	}
+    int N, i, j;
+    printf ("Enter N to have all the simple numbers less than N\nN = ");
+    scanf("%d", &N);
+    printf ("\nSimple numbers:\n");
+    for (i = 2; i < N; i++)
+    {
+        int b = 1;
+        for (j = 1; j < i; j++)
+        {
+            float a = (float)i/(float)j - i/j;
+            if ((a == 0.0) && (i!=j) && (i!=1) && (j!=1))
+            {
+                b = 0;
+                break;
+            }
+        }
+        if(b==1)
+        {
+            printf("%d\n", i);
+        }
+    }
 
-	system("pause");
-	return 0;
+    printf("\n");
+    system("pause");
+    return 0;
 }
